@@ -37,7 +37,6 @@ namespace Dating.api.Controllers
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
-
         }
     }
 }
