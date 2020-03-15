@@ -79,7 +79,7 @@ namespace Dating.api.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
+ 
             return Ok(new
             {
                 token = tokenHandler.WriteToken(token)
