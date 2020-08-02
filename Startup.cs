@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dating.api.Data;
+using Dating.api.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace Dating.api
              });
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
             services.AddCors();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -53,6 +55,7 @@ namespace Dating.api
                     };
 
                     });
+            services.AddScoped<LogUserActivity>();
 
 
         }
